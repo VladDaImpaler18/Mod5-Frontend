@@ -1,0 +1,1 @@
+//The Income Statement details profits and losses ENTRIES

@@ -4,8 +4,9 @@ import wishlistReducer from './wishlistReducer';
 
 
 const rootReducer = combineReducers({
-    budgetReducer,
-    wishlistReducer
+    budgetReducer,//or do budgets: budgetReducer,
+    wishlistReducer//or do wishlists: wishlistReducer
 })
+
 
 export default rootReducer

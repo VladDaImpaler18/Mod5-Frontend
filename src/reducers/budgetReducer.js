@@ -1,0 +1,22 @@
+
+const budgetReducer = (state = { entries: [], loading: false }, action) => {
+    switch(action.type) {
+        case 'LOADING_BUDGET':
+            return {
+                ...state,
+                entries: [...state.entries],
+                loading: true
+            };
+        case 'ADD_ENTRY':
+            return {
+                ...state,
+                entries: action.entries,
+                loading: false
+            };
+        
+        default:
+            return state;
+    }
+}
+
+export default budgetReducer;
