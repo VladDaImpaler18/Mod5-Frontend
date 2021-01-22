@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import BudgetForm from './components/BudgetForm';
 import { connect } from 'react-redux';
 import { fetchUsers } from './actions/userActions';
-import UserCard from './containers/UserCard';
+import UserContainer from './containers/UsersContainer';
 
 class App extends Component {
 
@@ -16,7 +16,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>App Page!</h1>
-          <UserCard></UserCard>
+          <UserContainer></UserContainer>
           <BudgetForm></BudgetForm>
         </header>
       </div>

@@ -3,10 +3,26 @@ import React, { Component } from 'react'
 import UserCard from './UserCard';
 
 
+
 class UsersContainer extends Component {
-    listUsers = () => {
-        return this.props.users.map( user => <UserCard user={user}></UserCard>)
+    state = {
+        users: []
     }
+
+    componentDidMount() {
+    console.log("props in DidMount", this.props)
+    fetch('http://localhost:3001/users')
+        .then(response => response.json())
+        .then(userData => {
+            console.log("FetchUsers happened.", userData);
+            })
+    }
+    
+    listUsers = () => {
+            if(this.state.users.length > 0) {return (this.state.users.map( user => <UserCard user={user}></UserCard>))}
+            else {return "No Users? I dunno..."}
+    }
+    
     render() {
         return (
             <div>

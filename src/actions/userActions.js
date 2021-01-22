@@ -15,5 +15,5 @@ export const fetchUsers = () => {
 }
 
 export const selectUser = () => {
-    
+    console.log("Select User!");
 }
