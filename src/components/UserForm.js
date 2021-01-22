@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class userForm extends Component {
+class UserForm extends Component {
     render() {
         return (
             <div>
@@ -11,4 +11,4 @@ class userForm extends Component {
     }
 }
 
-export default connect(null, { loginUser })(userForm);
+export default connect(null, { loginUser })(UserForm);
