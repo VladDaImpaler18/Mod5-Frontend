@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-
+import { addEntry } from '../actions/budgetActions'
 //budget_items( 
 //    id: uuid, name: text, amount:money, reccuring:boolean
 //    expirationDate:DATE
@@ -11,14 +11,31 @@ class budgetForm extends Component {
         text: ''
     }
     
-    handleOnChange = event => null; //do this
+    handleOnChange = event => {
+        debugger;
+        // this.setState({
 
-    handleOnSubmit = event => null; //do this
+        // })
+    };
+
+    handleOnSubmit = event => {
+        event.preventDefault();
+        debugger;
+    };
     render() {
         return (
             <div>
-                
+                <form onSubmit={(event) => handleOnSubmit(event)}>
+                    <label>Name:</label>
+                    <input type="text" onChange={(event) => this.handleOnChange(event)} />
+
+
+
+                    <input type="submit" />
+                </form>
             </div>
         )
     }
 }
+
+export default connect(null, { addEntry })(budgetForm);
