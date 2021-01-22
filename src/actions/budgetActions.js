@@ -8,3 +8,7 @@ export const fetchList = () => {
         .then(items => console.log(items)); //second dispatch goes here (ADD_ITEM)
     };
 }
+
+export const addEntry = (entry) => {
+    return { type: ADD_ENTRY, entry }; //entry:entry
+}

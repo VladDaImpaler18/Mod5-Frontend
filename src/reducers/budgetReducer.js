@@ -7,10 +7,10 @@ const budgetReducer = (state = { entries: [], loading: false }, action) => {
                 entries: [...state.entries],
                 loading: true
             };
-        case 'ADD_ENTRY':
-            return {
+        case 'ADD_ENTRY':  
+        return {
                 ...state,
-                entries: action.entries,
+                entries: action.entry,
                 loading: false
             };
         
