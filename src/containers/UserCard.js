@@ -7,14 +7,14 @@ import { selectUser } from '../actions/userActions';
 
 class UserCard extends Component {
     
-    handleOnClick = event => {
-        debugger;
-        this.props.selectUser(event.id)
+    handleOnClick = () => {
+        console.log("Handle on click done, user:", this.props.user.name)
+        this.props.selectUser(this.props.user)
     }
     
     render() {
         return (
-            <div key={this.props.user.id} onClick={this.handleOnClick}>
+            <div onClick={this.handleOnClick}>
                 {this.props.user.name}
             </div>
         )

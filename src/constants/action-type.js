@@ -9,4 +9,5 @@ export const IMPORT_ENTRIES = "IMPORT_ENTRIES";
 //User Constants
 
 export const LOADING_USER = "LOADING_USER";
+export const ADD_USER = "ADD_USER";
 export const SELECT_USER = "SELECT_USER";

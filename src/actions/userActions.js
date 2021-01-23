@@ -1,4 +1,4 @@
-import { LOADING_USER, SELECT_USER , IMPORT_ENTRIES, IMPORT_ITEMS} from '../constants/action-type';
+import { LOADING_USER, SELECT_USER , ADD_USER, ADD_ENTRY, ADD_ITEM} from '../constants/action-type';
 
 export const fetchUsers = () => {
     return (dispatch) => {
@@ -6,14 +6,19 @@ export const fetchUsers = () => {
         fetch('http://localhost:3001/users')
         .then(response => response.json())
         .then(userData => {
-            console.log("FetchUsers happened.", userData); //second dispatch goes here (ADD_ITEM)   
-            dispatch({ type: SELECT_USER, user: userData.user })
-            dispatch({ type: IMPORT_ENTRIES, user: userData.entries })
-            dispatch({ type: IMPORT_ITEMS, user: userData.items })
+            console.log("FetchUsers in action happened.", userData); //second dispatch goes here (ADD_ITEM)   
+            dispatch({ type: ADD_USER, user: userData })
+            dispatch({ type: ADD_ENTRY, user: userData.entries })
+            dispatch({ type: ADD_ITEM, user: userData.items })
         })
     };
 }
 
-export const selectUser = () => {
+export const selectUser = (user) => {
     console.log("Select User!");
+    return { type: SELECT_USER, user }
+}
+
+export const addUser = (user) => {
+    return { type: ADD_USER, user: user }
 }
