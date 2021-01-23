@@ -16,7 +16,7 @@ const userReducer = (state = {user: {}, loading: false}, action) => {
             debugger;
             return {
                 ...state,
-                user: {id: action.user.id, name: action.user.name, email: action.user.email},
+                user: {id: action.userData.id, name: action.userData.name, email: action.userData.email},
                 loading: false
             };
 

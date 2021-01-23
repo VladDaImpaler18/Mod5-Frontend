@@ -1,7 +1,7 @@
 //Wishlist constants
 export const LOADING_LIST = "LOADING_LIST";
 export const ADD_ITEM = "ADD_ITEM";
-export const IMPORT_ITEMS = "IMPORT_ENTRIES";
+export const IMPORT_ITEMS = "IMPORT_ITEMS";
 //Budget Constants
 export const LOADING_BUDGET = "LOADING_BUDGET";
 export const ADD_ENTRY = "ADD_ENTRY";

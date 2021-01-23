@@ -1,4 +1,4 @@
-import { LOADING_USER, SELECT_USER , ADD_USER, ADD_ENTRY, ADD_ITEM} from '../constants/action-type';
+import { LOADING_USER, SELECT_USER , ADD_USER, ADD_ENTRY, ADD_ITEM, IMPORT_ITEMS, IMPORT_ENTRIES} from '../constants/action-type';
 
 export const fetchUsers = () => {
     return (dispatch) => {
@@ -15,8 +15,14 @@ export const fetchUsers = () => {
 }
 
 export const selectUser = (user) => {
-    console.log("Select User!");
-    return { type: SELECT_USER, user }
+    const userData = {id: user.id, name: user.name, email: user.email};
+    const items = user.WishlistItems;
+    const entries = user.BudgetItems;
+    return (dispatch) =>{
+        dispatch({ type: SELECT_USER, userData })
+        dispatch({ type: IMPORT_ITEMS, items })
+        dispatch({ type: IMPORT_ENTRIES, entries })
+    } 
 }
 
 export const addUser = (user) => {
