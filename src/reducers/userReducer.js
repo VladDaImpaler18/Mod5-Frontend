@@ -1,7 +1,7 @@
 import { SELECT_USER, LOADING_USER, ADD_USER, IMPORT_ENTRIES } from '../constants/action-type';
 
 //User fetch will grab all the user's (budget)entries and (wishlist)items.
-const userReducer = (state = {user: [], loading: false}, action) => {
+const userReducer = (state = {user: {}, loading: false}, action) => {
     switch(action.type){
         case LOADING_USER:
             debugger;
@@ -16,7 +16,7 @@ const userReducer = (state = {user: [], loading: false}, action) => {
             debugger;
             return {
                 ...state,
-                user: [action.user.id, action.user.name, action.user.email],
+                user: {id: action.user.id, name: action.user.name, email: action.user.email},
                 loading: false
             };
 
