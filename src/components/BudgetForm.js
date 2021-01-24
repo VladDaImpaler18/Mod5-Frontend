@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { addEntry } from '../actions/budgetActions'
+
 //budget_items( 
 //    id: uuid, name: text, amount:money, reccuring:boolean
 //    expirationDate:DATE

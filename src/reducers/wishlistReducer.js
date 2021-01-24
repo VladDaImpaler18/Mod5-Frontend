@@ -16,7 +16,6 @@ const wishlistReducer = (state = { items: [], loading: false }, action) => {
             };
         
         case IMPORT_ITEMS:
-            debugger;
             return {
                 ...state,
                 items: action.items,

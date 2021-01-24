@@ -13,7 +13,6 @@ const userReducer = (state = {user: {}, loading: false}, action) => {
 
 
         case SELECT_USER:
-            debugger;
             return {
                 ...state,
                 user: {id: action.userData.id, name: action.userData.name, email: action.userData.email},

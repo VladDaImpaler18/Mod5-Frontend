@@ -14,7 +14,6 @@ const budgetReducer = (state = { entries: [], loading: false }, action) => {
                 loading: false
             };
         case IMPORT_ENTRIES:
-            debugger    
             return {
                 ...state,
                 entries: action.entries,
