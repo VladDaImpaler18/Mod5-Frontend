@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { addEntry } from '../actions/budgetActions'
+import Checkbox from './Checkbox'
 
 //budget_items( 
 //    id: uuid, name: text, amount:money, reccuring:boolean
@@ -11,7 +12,7 @@ class BudgetForm extends Component {
     state = {
         name: '',
         amount: '',
-        recurring: '',
+        recurring: false,
         expirationDate: '',
         //user_id will be set later. 
         //wishlist_item_id: '',
@@ -31,10 +32,18 @@ class BudgetForm extends Component {
         this.setState({
             name: '',
             amount: '',
-            recurring: '',
+            recurring: false,
             expirationDate: '',
         })
     };
+
+    handleOnCheckboxChange = event => {
+        this.setState({
+            ...this.state,
+            recurring: !this.state.recurring
+        })
+    }
+
     render() {
         return (
             <div>
@@ -45,11 +54,17 @@ class BudgetForm extends Component {
                     <label>Amount:</label>
                     <input type="text" name="amount" value={this.state.amount} onChange={this.handleOnChange} />
                     <br/>
-                    <label>recurring:</label>
-                    <input type="text" name="recurring" value={this.state.recurring} onChange={this.handleOnChange} />
+                    <Checkbox label={"Recurring"} isSelected={this.state.recurring} onCheckboxChange={this.handleOnCheckboxChange} />
                     <br/>
-                    <label>expirationDate:</label>
-                    <input type="text" name="expirationDate" value={this.state.expirationDate} onChange={this.handleOnChange} />
+                    {this.state.recurring ?
+                    <input
+                        type="text"
+                        name="expirationDate"
+                        value={this.state.expirationDate}
+                        placeholder="MM/DD/YYYY"
+                        onChange={this.handleOnChange}/>
+                        :
+                        null }
                     <br/>
                     <br/>
                     <input type="submit" />
