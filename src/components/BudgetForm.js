@@ -28,7 +28,6 @@ class BudgetForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        debugger;
         const entry = {...this.state, amount: parseFloat(this.state.amount), user_id: this.props.user.id};
         this.props.addEntry(entry);
         this.setState({

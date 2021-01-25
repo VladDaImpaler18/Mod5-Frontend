@@ -21,8 +21,10 @@ export const addEntry = (entry) => {
     };
     fetch("http://localhost:3001/budget_items", configObj)
     .then(response => response.json())
-    .then(item => console.log("POST called in addEntry action", item)) //this should return an item? With an UUID i think.
-    return { type: ADD_ENTRY, entry }; //entry:entry
+    .then(entry => { 
+        console.log("the server replied:", entry);
+        dispatch({ type: ADD_ENTRY, entry })
+    })
     };
 }
 
