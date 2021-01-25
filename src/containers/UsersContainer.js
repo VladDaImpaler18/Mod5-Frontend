@@ -27,7 +27,7 @@ class UsersContainer extends Component {
     }
     
     listUsers = () => {
-            if(this.state.loading) {return (this.state.users.map( user => <UserCard key={user.id} user={user}></UserCard>))}
+            if(!this.state.loading) {return (this.state.users.map( user => <UserCard key={user.id} user={user}></UserCard>))}
             else {return "Loading users"}
     }
     

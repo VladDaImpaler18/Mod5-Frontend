@@ -9,15 +9,28 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from './reducers'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Navbar from './components/navigation/Navbar'
+import IncomeStatement from './containers/IncomeStatement';
+import Wishlist from './containers/WishlistCart';
+import Account from './components/navigation/Account';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
   //<React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router>
+        <>
+          <Navbar />
+          <Route path="/" render ={ () => <h1>Welcome to Budget Buddy!</h1>} />
+          <Route exact path="/account" component={Account} />
+          <Route exact path="/budget" component={IncomeStatement} />
+          <Route exact path="/wishlist" component={Wishlist} />
+        </>
+      </Router>
     </Provider>,
+  
   //</React.StrictMode>,
   document.getElementById('root')
 );
