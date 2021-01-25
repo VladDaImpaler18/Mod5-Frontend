@@ -11,6 +11,7 @@ import Checkbox from './Checkbox'
 class BudgetForm extends Component {
     state = {
         name: '',
+        description: '',
         amount: '',
         recurring: false,
         expirationDate: '',
@@ -27,17 +28,19 @@ class BudgetForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        const entry = {...this.state};
+        debugger;
+        const entry = {...this.state, amount: parseFloat(this.state.amount), user_id: this.props.user.id};
         this.props.addEntry(entry);
         this.setState({
             name: '',
+            description: '',
             amount: '',
             recurring: false,
             expirationDate: '',
         })
     };
 
-    handleOnCheckboxChange = event => {
+    handleOnCheckboxChange = () => {
         this.setState({
             ...this.state,
             recurring: !this.state.recurring
@@ -50,6 +53,9 @@ class BudgetForm extends Component {
                 <form onSubmit={this.handleOnSubmit}>
                     <label>Name:</label>
                     <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange} />
+                    <br/>
+                    <label>Description:</label>
+                    <textarea name="description" value={this.state.description} onChange={this.handleOnChange} />
                     <br/>
                     <label>Amount:</label>
                     <input type="text" name="amount" value={this.state.amount} onChange={this.handleOnChange} />
@@ -73,5 +79,11 @@ class BudgetForm extends Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return{
+        user: state.userReducer.user
+    }
+}
 
-export default connect(null, { addEntry })(BudgetForm);
+
+export default connect(mapStateToProps, { addEntry })(BudgetForm);

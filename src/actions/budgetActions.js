@@ -10,7 +10,7 @@ export const fetchList = () => {
 }
 
 export const addEntry = (entry) => {
-    
+    return(dispatch) => {
     let configObj = {
         method: "POST",
         headers: {
@@ -19,10 +19,11 @@ export const addEntry = (entry) => {
         },
         body: JSON.stringify(entry)
     };
-    fetch("http://localhost:3001/budget_items/create", configObj)
+    fetch("http://localhost:3001/budget_items", configObj)
     .then(response => response.json())
     .then(item => console.log("POST called in addEntry action", item)) //this should return an item? With an UUID i think.
     return { type: ADD_ENTRY, entry }; //entry:entry
+    };
 }
 
 export const importBudget = (entries) => {

@@ -13,13 +13,14 @@ class App extends Component {
         <header className="App-header">
           <h1>App Page!</h1>
         </header>
-        <p>
+        <>
             <h4>User Selection:</h4>
             <UserContainer></UserContainer>
-        </p>
-        <p> Budget Form:  
+        </>
+        <p></p>
+        <> Budget Form:  
           <BudgetForm></BudgetForm>
-        </p>
+        </>
       </div>
     )
   }
