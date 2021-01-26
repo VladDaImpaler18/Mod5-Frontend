@@ -43,11 +43,8 @@ class IncomeStatement extends Component {
             <div>
                 <h1>Income Statement</h1>
                 <>
-                    <label>Fixed Costs</label>
                     <BudgetEntries label = {"Fixed"} entries={recurringCosts} />
-                </>
-                <>
-                    <label>Variable Costs</label>
+                    <br/>
                     <BudgetEntries label = {"Varied"} entries={oneTimeCosts} />
                 </>
                 <>
