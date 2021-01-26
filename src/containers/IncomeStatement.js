@@ -42,9 +42,9 @@ class IncomeStatement extends Component {
             <div>
                 <h1>Income Statement</h1>
                 <>
-                    <BudgetEntries label = {"Fixed"} entries={recurringCosts} />
+                    {recurringCosts ? <BudgetEntries label = {"Fixed"} entries={recurringCosts} /> : null}
                     <br/>
-                    <BudgetEntries label = {"Varied"} entries={oneTimeCosts} />
+                    { oneTimeCosts ? <BudgetEntries label = {"Varied"} entries={oneTimeCosts} /> : null }
                 </>
                 <>
                     Budget Form:  
