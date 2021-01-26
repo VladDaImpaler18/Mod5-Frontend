@@ -1,6 +1,6 @@
 // this is a presentational component.
 // props include entry-Object and maximized-Boolean
-import React from 'react'
+
 
 /* Try this later
 const wantedProperties = ['description', 'expirationDate','created_at'];
@@ -12,23 +12,24 @@ const renderDetails = (entry) => {
 }
 */
 
+// const renderTitle = () => <li key={props.entry.id}>{ props.entry.name } --- { props.entry.amount }</li> 
+//     const renderDetails = () => 
+//         <ul>
+//             <li><label>Description: </label>{props.entry.description}</li>
+//             <li><label>Expires: </label>{props.entry.expirationDate}</li>
+//             <li><label>Created: </label>{props.entry.created_at}</li>
+//         </ul>
 
-const BudgetEntries = (props) => {
-    const renderTitle = () => <li key={props.entry.id}>{ props.entry.name } --- { props.entry.amount }</li> 
-    const renderDetails = () => 
-        <ul>
+import React from 'react'
+
+const BudgetEntry = props => (
+    <div>
+        <li key={props.entry.id}>{ props.entry.name } --- { props.entry.amount }</li>
+        <ul style={props.showMore ? {display: 'block'} : {display: 'none'} }>
             <li><label>Description: </label>{props.entry.description}</li>
             <li><label>Expires: </label>{props.entry.expirationDate}</li>
             <li><label>Created: </label>{props.entry.created_at}</li>
         </ul>
-    
-    return (
-        <div>
-            {renderTitle}
-            {this.props.maximized ? renderDetails : null}
-            
-        </div>
-    )
-}
-
-export default BudgetEntries;
+    </div>
+)
+export default BudgetEntry;

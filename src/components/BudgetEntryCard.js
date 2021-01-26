@@ -6,13 +6,13 @@
 import React, { Component } from 'react'
 import BudgetEntry from './BudgetEntry';
 
-export default class BudgetEntryCard extends Component {
+class BudgetEntryCard extends Component {
     state = {
-        maximized: false
+        showMore: false
     }
     handleOnClick = () => {
         this.setState({
-            maximized: !this.state.maximized
+            showMore: !this.state.showMore
         })
     }
     handleDeleteOnClick = () => console.log("Delete button activated @ BudgetEntryCard.js: ", this.props.entry.name)
@@ -20,10 +20,12 @@ export default class BudgetEntryCard extends Component {
     render() {
         return (
             <div onClick={this.handleOnClick}>
-                <BudgetEntry entry={this.props.entry} maximized={this.state.maximized} /> 
-                <button onClick={() => this.handleDeleteOnClick()}> X </button>               
+                <BudgetEntry entry={this.props.entry} showMore={this.state.showMore ? "block" : "none"}> 
+                    <button onClick={() => this.handleDeleteOnClick()}> X </button>               
+                </BudgetEntry>
             </div>
         )
     }
 }
 
+export default BudgetEntryCard;

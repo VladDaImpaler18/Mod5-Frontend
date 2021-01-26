@@ -33,9 +33,8 @@ class IncomeStatement extends Component {
     //     created_at: "2021-01-22T05:27:16.270Z",
     //     updated_at: "2021-01-22T05:27:16.270Z"}
     
-    
     render() {
-        const recurringCosts = []
+        const recurringCosts = [];
         const oneTimeCosts = [];
         this.props.entries.forEach(entry => entry.recurring ? recurringCosts.push(entry) : oneTimeCosts.push(entry));
 
