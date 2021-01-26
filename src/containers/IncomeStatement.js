@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import BudgetForm from '../components/BudgetForm';
+import BudgetEntries from '../components/BudgetEntries';
 
 class IncomeStatement extends Component {
     //testing state
@@ -16,10 +17,16 @@ class IncomeStatement extends Component {
     //     wishlist_item_id: null,
     //     created_at: "2021-01-22T05:27:16.270Z",
     //     updated_at: "2021-01-22T05:27:16.270Z"}
+
+
     render() {
         return (
             <div>
                 <h1>Income Statement</h1>
+                <>
+                    Budget:
+                    <BudgetEntries />
+                </>
                 <>
                     Budget Form:  
                     <BudgetForm></BudgetForm>

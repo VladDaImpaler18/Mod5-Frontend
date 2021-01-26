@@ -15,8 +15,9 @@ class BudgetForm extends Component {
         amount: '',
         recurring: false,
         expirationDate: '',
-        //user_id will be set later. 
+        //user_id: '' // will be set later. 
         //wishlist_item_id: '',
+        //created_at: ''
     }
     
     handleOnChange = event => {
