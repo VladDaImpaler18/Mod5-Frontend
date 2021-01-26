@@ -8,21 +8,21 @@ import BudgetEntry from './BudgetEntry';
 
 class BudgetEntryCard extends Component {
     state = {
-        showMore: false
+        expanded: false
     }
     handleOnClick = () => {
         this.setState({
-            showMore: !this.state.showMore
+            expanded: !this.state.expanded
         })
     }
     handleDeleteOnClick = () => console.log("Delete button activated @ BudgetEntryCard.js: ", this.props.entry.name)
 
     render() {
         return (
-            <div onClick={this.handleOnClick}>
-                <BudgetEntry entry={this.props.entry} showMore={this.state.showMore ? "block" : "none"}> 
-                    <button onClick={() => this.handleDeleteOnClick()}> X </button>               
-                </BudgetEntry>
+            <div>
+                <BudgetEntry entry={this.props.entry} expanded={this.state.expanded} />
+                <button onClick={() => this.handleDeleteOnClick()}> X </button>
+                <a href="#" onClick={this.handleOnClick}>{this.state.expanded ? "Show less..." : "Show more..." }</a>
             </div>
         )
     }

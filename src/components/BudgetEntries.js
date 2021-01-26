@@ -25,12 +25,13 @@ class BudgetEntries extends Component {
         const values = this.props.entries.map( entry => parseFloat(entry.amount));
         const total = values.reduce((sum,entry) => sum + entry)
         return (
-            <div onClick={this.handleOnClick}>
+            <div>
                 <li><label>{this.props.label}: </label><label># of Entries: </label>{this.props.entries.length} <label>Total: </label> {total}</li>
                 
                 <ul style={this.state.expanded ? {display: 'block'} : {display: 'none'} }>
                     {this.props.entries.map(entry => <BudgetEntryCard entry={entry} />)}
                 </ul>
+                <a href="#" onClick={this.handleOnClick}>{this.state.expanded ? "Show less..." : "Show more..." }</a>
          </div>
         )}
 }
