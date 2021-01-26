@@ -13,25 +13,20 @@ const renderDetails = (entry) => {
 */
 
 
-const renderDetails = (entry) => {
-    <>
-        <li><label>Description: </label>{entry.description}</li>
-        <li><label>Expires: </label>{entry.expirationDate}</li>
-        <li><label>Created: </label>{entry.created_at}</li>
-    </>
-}
-
 const BudgetEntries = (props) => {
-    const title = () => <li key={props.entry.id}>{ props.entry.name } --- { props.entry.amount }</li> 
-    const details = () => 
+    const renderTitle = () => <li key={props.entry.id}>{ props.entry.name } --- { props.entry.amount }</li> 
+    const renderDetails = () => 
         <ul>
-            { renderDetails(props.entry) }
+            <li><label>Description: </label>{props.entry.description}</li>
+            <li><label>Expires: </label>{props.entry.expirationDate}</li>
+            <li><label>Created: </label>{props.entry.created_at}</li>
         </ul>
     
     return (
         <div>
-            {title}
-            {details}
+            {renderTitle}
+            {this.props.maximized ? renderDetails : null}
+            
         </div>
     )
 }
