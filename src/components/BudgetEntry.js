@@ -1,5 +1,5 @@
-// this is a presentational component. has onClick feature which will show all the details,
-// or only sum it up
+// this is a presentational component.
+// props include entry-Object and maximized-Boolean
 import React from 'react'
 
 /* Try this later
