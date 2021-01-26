@@ -10,7 +10,7 @@ const budgetReducer = (state = { entries: [], loading: false }, action) => {
         case ADD_ENTRY:  
             return {
                 ...state,
-                entries: action.entry,
+                entries: state.entries.concat(action.entry),
                 loading: false
             };
         case IMPORT_ENTRIES:
