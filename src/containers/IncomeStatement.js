@@ -1,8 +1,23 @@
 //The Income Statement details profits and losses ENTRIES
+/*
+Income Statement
+ L <BudgetEntries entries={Fixed Costs} />
+    |
+    L <BudgetEntryCard>
+        L <BudgetEntry />
+ L <BudgetEntries entries={Variable Costs} />
+    |
+    L <BudgetEntryCard>
+        L <BudgetEntry />
+    <Button ADD_ACTION>
+        L <BudgetForm /> is magically expanded
+*/
 
 import React, { Component } from 'react'
 import BudgetForm from '../components/BudgetForm';
 import BudgetEntries from '../components/BudgetEntries';
+
+import { connect } from 'react-redux';
 
 class IncomeStatement extends Component {
     //testing state
@@ -17,15 +32,23 @@ class IncomeStatement extends Component {
     //     wishlist_item_id: null,
     //     created_at: "2021-01-22T05:27:16.270Z",
     //     updated_at: "2021-01-22T05:27:16.270Z"}
-
-
+    
+    
     render() {
+        const recurringCosts = []
+        const oneTimeCosts = [];
+        this.props.entries.forEach(entry => entry.recurring ? recurringCosts.push(entry) : oneTimeCosts.push(entry));
+
         return (
             <div>
                 <h1>Income Statement</h1>
                 <>
-                    Budget:
-                    <BudgetEntries />
+                    <label>Fixed Costs</label>
+                    <BudgetEntries label = {"Fixed"} entries={recurringCosts} />
+                </>
+                <>
+                    <label>Variable Costs</label>
+                    <BudgetEntries label = {"Varied"} entries={oneTimeCosts} />
                 </>
                 <>
                     Budget Form:  
@@ -37,4 +60,7 @@ class IncomeStatement extends Component {
 
     
 }
-export default IncomeStatement;
+const mapStateToProps = state => {
+    return { entries: state.budgetReducer.entries }
+}
+export default connect(mapStateToProps)(IncomeStatement);
