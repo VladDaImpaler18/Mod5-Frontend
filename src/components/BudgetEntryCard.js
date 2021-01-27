@@ -5,6 +5,8 @@
 // Props include entry, 
 import React, { Component } from 'react'
 import BudgetEntry from './BudgetEntry';
+import { connect } from 'react-redux';
+import { deleteEntry } from '../actions/budgetActions';
 
 class BudgetEntryCard extends Component {
     state = {
@@ -15,7 +17,10 @@ class BudgetEntryCard extends Component {
             expanded: !this.state.expanded
         })
     }
-    handleDeleteOnClick = () => console.log("Delete button activated @ BudgetEntryCard.js: ", this.props.entry.name)
+    handleDeleteOnClick = () => {
+        console.log("Delete button activated @ BudgetEntryCard.js: ", this.props.entry.name)
+        return this.props.deleteEntry(this.props.entry.id)
+    }
 
     render() {
         return (
@@ -28,4 +33,4 @@ class BudgetEntryCard extends Component {
     }
 }
 
-export default BudgetEntryCard;
+export default connect(null, { deleteEntry })(BudgetEntryCard);

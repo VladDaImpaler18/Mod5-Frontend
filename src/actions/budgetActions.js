@@ -22,7 +22,6 @@ export const addEntry = (entry) => {
     fetch("http://localhost:3001/budget_items", configObj)
     .then(response => response.json())
     .then(entry => { 
-        console.log("the server replied, entryObj to add:", entry);
         dispatch({ type: ADD_ENTRY, entry })
     })
     };
@@ -36,14 +35,11 @@ export const deleteEntry = (entryId) => {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify(entryId)
+            body: JSON.stringify({id: entryId})
         };
         fetch("http://localhost:3001/budget_items", configObj)
         .then(response => response.json())
-        .then (entryId => {
-            console.log("the server replied, ID to delete:", entryId);
-            dispatch({ type: DELETE_ENTRY, entryId})
-        })
+        .then (entryId => dispatch({ type: DELETE_ENTRY, entryId}))
     };
 }
 

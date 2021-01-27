@@ -29,7 +29,16 @@ class BudgetForm extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        const entry = {...this.state, amount: parseFloat(this.state.amount), user_id: this.props.user.id};
+        let entry = {...this.state, amount: parseFloat(this.state.amount), user_id: this.props.user.id};
+        
+        if(this.state.recurring && entry.expirationDate.length > 0){
+            let dateRegexp = /(?<month>[0-9]{2})\D(?<day>[0-9]{2})\D(?<year>[0-9]{4})/;
+            // inputted as MM/DD/YYYY
+            let {month, day, year} = entry.expirationDate.match(dateRegexp).groups;
+            // 1999-01-08 ISO 8601; January 8 in any mode (PostgreSQL recommended format) 
+            const formattedDate = `${year}-${month}-${day}`;
+            entry = {...entry, expirationDate: formattedDate}
+        } else {entry = {...entry, recurring: false}} //If recurring was checked, but expiration date was blank it turns recurring false
         this.props.addEntry(entry);
         this.setState({
             name: '',
@@ -63,12 +72,14 @@ class BudgetForm extends Component {
                     <Checkbox label={"Recurring"} isSelected={this.state.recurring} onCheckboxChange={this.handleOnCheckboxChange} />
                     <br/>
                     {this.state.recurring ?
-                    <input
+                        <>
+                        <label>Expiration Date:</label><input
                         type="text"
                         name="expirationDate"
                         value={this.state.expirationDate}
                         placeholder="MM/DD/YYYY"
                         onChange={this.handleOnChange}/>
+                        </>
                         :
                         null }
                     <br/>
