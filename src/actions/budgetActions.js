@@ -1,4 +1,4 @@
-import { LOADING_BUDGET, ADD_ENTRY, IMPORT_ENTRIES} from '../constants/action-type.js';
+import { LOADING_BUDGET, ADD_ENTRY, IMPORT_ENTRIES, DELETE_ENTRY} from '../constants/action-type.js';
 
 export const fetchList = () => {
     return (dispatch) => {
@@ -22,9 +22,28 @@ export const addEntry = (entry) => {
     fetch("http://localhost:3001/budget_items", configObj)
     .then(response => response.json())
     .then(entry => { 
-        console.log("the server replied:", entry);
+        console.log("the server replied, entryObj to add:", entry);
         dispatch({ type: ADD_ENTRY, entry })
     })
+    };
+}
+
+export const deleteEntry = (entryId) => {
+    return(dispatch) => {
+        let configObj = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(entryId)
+        };
+        fetch("http://localhost:3001/budget_items", configObj)
+        .then(response => response.json())
+        .then (entryId => {
+            console.log("the server replied, ID to delete:", entryId);
+            dispatch({ type: DELETE_ENTRY, entryId})
+        })
     };
 }
 

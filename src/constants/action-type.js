@@ -6,6 +6,7 @@ export const IMPORT_ITEMS = "IMPORT_ITEMS";
 export const LOADING_BUDGET = "LOADING_BUDGET";
 export const ADD_ENTRY = "ADD_ENTRY";
 export const IMPORT_ENTRIES = "IMPORT_ENTRIES";
+export const DELETE_ENTRY = "DELETE_ENTRY";
 //User Constants
 
 export const LOADING_USER = "LOADING_USER";
