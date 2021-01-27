@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+* [Getting Started](#getting-started)
+* [Usage](#usage)
+* [Contributors](#contributors)
+* [License](#license)
+* [Changelog](#changelog)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Getting Started -- The Frontend
 
-### `yarn start`
+In the Terminal, navigate to the frontend/ folder and run the command `npm install && npm start`. This will install the necessary npm packages and open a page in the browser to view the webapp. The page may not load all the required information because the backend still has to be set up, and started.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To set up the backend, in the Terminal navigate to the backend/ folder and run the command `bundle install`. The database used in this project is PostgreSQL. PostgeSQL requires a username to be created in advance, and have the username inputted in `./config/database.yml` on lines 27, 62 & 86. If you were to use the default values I have set, the lines will look like `username: vlad`. In order to use the pre-set username `vlad` you must create a PostgreSQL role. In the terminal enter the command `sudo -u postgres createuser --superuser vlad`. Assuming you have the ability to sudo, this command will create a user named 'vlad' and give them --superuser abilities, normally not recommended but for the purpose of the demo will work.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Now the database must be created and loaded. To do so navigate to the backend/ folder and use the rails command `rails db:migrate`. Once the database is loaded and the schema is created, enter the command `rails db:setup` create the databases. Finally, populate the database with seed users by loading up the seed data, run the command `rails db:seed` then `rails s` to start the backend api server.
 
-### `yarn test`
+**NOTE: The backend is not included in this repo.** For a fully functional demo, navigate to the backend's github repo and clone it.
+For the backend goto: https://github.com/VladDaImpaler18/Mod5-Backend 
+Currently you are viewing the frontend: https://github.com/VladDaImpaler18/Mod5-Frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+This demo is for demonstrating how the Budget Application will work. Currently a pre-made user can be selected and entries can be added & removed from their budget. Navigate to the account page `localhost:3000/account` and select one of the three users to login as. Each user has their own budget and wishlist *(planned feature)*. With a user selected, navigate to the budget page `localhost:3000/budget` and you can view their income statement, click to expand the lists to see more details about the purchases, and expand the details on each individual purchase as well.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Contributors
+If you would like to contribute fork the github repo, create your feature branch, commit changes and push the branch.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
+(c) 2020 Vladimir Jimenez, all rights reserved. For Online Software Engineering PT - React Project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Changelog
+Version .9b (1/27/2020) Initial Release 
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Todo
+* Wishlist Components
+* Budget Component track all purchases and keeps record
+* Scope of date for budget (weekly view, monthly, Year To Date)
+* Add Calendar component for date entry
+* Style and beautification
