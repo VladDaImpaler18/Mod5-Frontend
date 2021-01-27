@@ -67,7 +67,7 @@ class BudgetForm extends Component {
                     <textarea name="description" value={this.state.description} onChange={this.handleOnChange} />
                     <br/>
                     <label>Amount:</label>
-                    <input type="text" name="amount" value={this.state.amount} onChange={this.handleOnChange} />
+                    <input type="text" name="amount" value={this.state.amount} placeholder="Ex: -40 for a $40 expense" onChange={this.handleOnChange} />
                     <br/>
                     <Checkbox label={"Recurring"} isSelected={this.state.recurring} onCheckboxChange={this.handleOnCheckboxChange} />
                     <br/>
@@ -84,7 +84,7 @@ class BudgetForm extends Component {
                         null }
                     <br/>
                     <br/>
-                    <input type="submit" />
+                    <input type="submit" value="Add Entry" />
                 </form>
             </div>
         )

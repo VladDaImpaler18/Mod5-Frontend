@@ -5,7 +5,7 @@ import React from 'react'
 
 const BudgetEntry = props => (
     <div>
-        <li key={props.entry.id}>{ props.entry.name } --- { props.entry.amount }</li>
+        <li key={props.entry.id}>{ props.entry.name } --- ${ props.entry.amount } {props.entry.amount > 0 ? "credit" : "debt" }</li>
         {props.expanded ? 
         <ul>
             <li><label>Description: </label>{props.entry.description}</li>
