@@ -27,7 +27,7 @@ class BudgetEntryCard extends Component {
             <div>
                 <BudgetEntry entry={this.props.entry} expanded={this.state.expanded} />
                 <button onClick={() => this.handleDeleteOnClick()}> X </button>
-                <a href="#" onClick={this.handleOnClick}>{this.state.expanded ? "Show less..." : "Show more..." }</a>
+                <a href={`#${this.props.entry.name}`} onClick={this.handleOnClick}>{this.state.expanded ? "Show less..." : "Show more..." }</a>
             </div>
         )
     }
