@@ -6,7 +6,6 @@ export const fetchUsers = () => {
         fetch('http://localhost:3001/users')
         .then(response => response.json())
         .then(userData => {
-            console.log("FetchUsers in action happened.", userData); //second dispatch goes here (ADD_ITEM)   
             dispatch({ type: ADD_USER, user: userData })
             dispatch({ type: ADD_ENTRY, user: userData.entries })
             dispatch({ type: ADD_ITEM, user: userData.items })
