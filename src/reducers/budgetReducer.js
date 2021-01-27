@@ -8,7 +8,6 @@ const budgetReducer = (state = { entries: [], loading: false }, action) => {
                 loading: true
             };
         case ADD_ENTRY:  
-            debugger
             return {
                 ...state,
                 entries: state.entries.concat(action.entry),
