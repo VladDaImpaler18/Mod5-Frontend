@@ -15,10 +15,17 @@ class UserCard extends Component {
     render() {
         return (
             <div onClick={this.handleOnClick}>
-                {this.props.user.name}
+                {this.props.user.id == this.props.loggedInID ?
+                <span style={{color: "green"}}>{this.props.user.name}</span>
+                :
+                <span>{this.props.user.name}</span>}
             </div>
         )
     }
 }
-
-export default connect( null, {selectUser})(UserCard);
+const mapStateToProps = state => {
+    return {
+        loggedInID: state.userReducer.user.id
+    }
+}
+export default connect( mapStateToProps, {selectUser})(UserCard);

@@ -78,12 +78,10 @@ class BudgetForm extends Component {
                         name="expirationDate"
                         value={this.state.expirationDate}
                         placeholder="MM/DD/YYYY"
-                        onChange={this.handleOnChange}/>
+                        onChange={this.handleOnChange}/><br/>
                         </>
                         :
-                        null }
-                    <br/>
-                    <br/>
+                        <br/> }
                     <input type="submit" value="Add Entry" />
                 </form>
             </div>
