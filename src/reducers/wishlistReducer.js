@@ -1,4 +1,4 @@
-import { IMPORT_ITEMS, LOADING_LIST, ADD_ITEM } from '../constants/action-type';
+import { IMPORT_ITEMS, LOADING_LIST, ADD_ITEM, DELETE_ITEM } from '../constants/action-type';
 
 const wishlistReducer = (state = { items: [], loading: false }, action) => {
     switch(action.type) {
@@ -11,7 +11,7 @@ const wishlistReducer = (state = { items: [], loading: false }, action) => {
         case ADD_ITEM:
             return {
                 ...state,
-                items: action.items,
+                items: state.items.concat(action.items),
                 loading: false
             };
         
@@ -21,7 +21,11 @@ const wishlistReducer = (state = { items: [], loading: false }, action) => {
                 items: action.items,
                 loading: false
             }
-
+        case DELETE_ITEM:
+            return {
+                ...state,
+                items: state.items.filter(item => item.id != action.itemId.id),
+            }
         default:
             return state;
     }

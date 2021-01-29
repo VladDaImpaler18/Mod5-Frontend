@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addItem } from '../actions/wishlistActions';
+import { addItem } from '../../actions/wishlistActions';
 
 //wishlist_items(
 //    id: uuid, name: text, description:text, price:money, url:text,
@@ -13,6 +13,7 @@ class WishlistForm extends Component {
         price: '',
         url: '',
         priority: '',
+        pictures: []
     }
     handleOnChange = event => {
         const { value, name } = event.target;
@@ -31,6 +32,7 @@ class WishlistForm extends Component {
             price: '',
             url: '',
             priority: '',
+            pictures: []
         })
     };
 
