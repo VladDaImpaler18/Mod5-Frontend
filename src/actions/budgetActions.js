@@ -22,7 +22,7 @@ export const addEntry = (entry) => {
     fetch("http://localhost:3001/budget_items", configObj)
     .then(response => response.json())
     .then(entry => { 
-        dispatch({ type: ADD_ENTRY, entry })
+        entry.id && dispatch({ type: ADD_ENTRY, entry })
     })
     };
 }

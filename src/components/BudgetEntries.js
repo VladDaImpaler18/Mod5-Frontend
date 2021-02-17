@@ -13,6 +13,7 @@ class BudgetEntries extends Component {
         //when maximized it renders all of the stuff
         state = {
             expanded: false,
+            sorted: false
         }
 
         handleOnClick = () => {
@@ -21,17 +22,27 @@ class BudgetEntries extends Component {
             })
           }
         
+        handleSortClick = () =>{
+            this.setState({
+                sorted: !this.state.sorted
+            })
+        }
+
         render(){
         const values = this.props.entries.map( entry => parseFloat(entry.amount));
         const total = values.reduce((sum,entry) => sum + entry)
         return (
             <div>
+                <button onClick={this.handleSortClick}>Sort</button>
                 <li onClick={this.handleOnClick}><label>{this.state.expanded ? "[ - ]" : "[ + }"}{this.props.label}: </label><label># of Entries: </label>{this.props.entries.length} <label>Total: </label> {total}</li>
                 
                 <ul style={this.state.expanded ? {display: 'block'} : {display: 'none'} }>
-                    {this.props.entries.map(entry => <BudgetEntryCard entry={entry} />)}
+                    { (this.state.sorted ? [...this.props.entries].sort((a,b)=> parseFloat(a.amount)-parseFloat(b.amount)): this.props.entries ).map(entry => <BudgetEntryCard entry={entry} />)}
                 </ul>
          </div>
         )}
 }
 export default BudgetEntries;
+
+//toggle button to sort amount \ unsorted. no redux, no rails
+//parsefloat for string amounts
